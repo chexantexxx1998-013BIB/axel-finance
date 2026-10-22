@@ -1,0 +1,161 @@
+:root{color-scheme:dark;--bg:#0b1020;--panel:#121a2c;--panel2:#182238;--line:#26334b;--text:#eef3ff;--muted:#94a3bd;--accent:#8b9cff;--green:#65d6a2;--red:#ff8290}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top left,#172443 0,transparent 45%),var(--bg);color:var(--text);font:15px/1.5 Inter,Segoe UI,Arial,sans-serif}
+button,input,select{font:inherit}.topbar{max-width:1180px;margin:auto;padding:30px 24px 18px;display:flex;justify-content:space-between;align-items:center;gap:16px}.eyebrow{font-size:11px;letter-spacing:.16em;color:var(--accent);font-weight:800;margin:0 0 5px}.topbar h1{font-size:clamp(25px,4vw,36px);margin:0;letter-spacing:-.04em}.spark{color:#f2c879}
+.container{max-width:1180px;margin:auto;padding:0 24px 24px}.toolbar{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:18px 0 20px}.toolbar-actions{display:flex;gap:10px;flex-wrap:wrap}.month-picker,label{display:flex;flex-direction:column;gap:7px;color:var(--muted);font-size:12px;font-weight:650}
+input,select{width:100%;min-width:0;border:1px solid var(--line);border-radius:10px;background:#0d1527;color:var(--text);padding:11px 12px;outline:none}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px #8b9cff20}
+.month-picker input{width:170px}.button{border:1px solid transparent;border-radius:10px;padding:11px 15px;font-weight:750;cursor:pointer;white-space:nowrap;transition:transform .15s,opacity .15s}.button:hover{transform:translateY(-1px)}.primary{background:var(--accent);color:#0a1020}.secondary{background:var(--panel2);border-color:var(--line);color:var(--text)}.file-button{position:relative;overflow:hidden;display:inline-flex;justify-content:center;cursor:pointer}.file-button input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.summary-card,.panel{background:linear-gradient(145deg,#151f34,#11192a);border:1px solid var(--line);border-radius:17px}.summary-card{padding:20px}.summary-card p{margin:0;color:var(--muted);font-size:13px}.summary-card h2{font-size:clamp(22px,3vw,30px);margin:10px 0 7px;letter-spacing:-.04em;overflow-wrap:anywhere}.summary-card small{color:var(--muted);font-size:11px}.balance-card{border-color:#46527e;background:linear-gradient(140deg,#202d50,#141c30)}
+.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.panel{padding:20px;min-width:0}.panel-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}.panel-heading h3{font-size:17px;margin:0}.panel-heading p{font-size:12px;color:var(--muted);margin:3px 0 0}
+.transaction-form{display:flex;flex-direction:column;gap:13px}.transaction-form label{font-size:12px}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.type-switch{display:flex;gap:8px}.type-switch label{flex-direction:row;align-items:center;padding:9px 12px;border:1px solid var(--line);border-radius:10px;flex:1}.type-switch input{width:auto;accent-color:var(--accent)}.full{width:100%}.form-message{margin:0;min-height:18px;color:var(--green);font-size:12px}
+.category-list{display:flex;flex-direction:column;gap:16px}.category-row{display:grid;grid-template-columns:minmax(90px,1fr) 2fr auto;align-items:center;gap:12px;font-size:12px}.category-name{overflow-wrap:anywhere}.bar-track{height:8px;border-radius:20px;background:#26334b;overflow:hidden}.bar-fill{height:100%;background:linear-gradient(90deg,#7185ff,#a8b4ff);border-radius:20px}.category-total{font-variant-numeric:tabular-nums;color:#dce4ff;text-align:right}.empty-state{padding:24px 8px;color:var(--muted);font-size:13px;text-align:center}
+.transactions-panel{margin-top:14px}.transactions-heading{align-items:end}.search-input{max-width:300px}.table-wrap{width:100%;overflow:auto}table{width:100%;border-collapse:collapse;text-align:left;white-space:nowrap}th{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700}td,th{padding:12px 10px;border-bottom:1px solid #243047}td{font-size:13px}tbody tr:last-child td{border-bottom:0}.amount-col{text-align:right}.amount{font-weight:800;text-align:right;font-variant-numeric:tabular-nums}.amount.income{color:var(--green)}.amount.expense{color:#ff9aa4}.pill{display:inline-block;border:1px solid var(--line);border-radius:20px;padding:3px 8px;font-size:11px;color:#c7d1e8}.delete-btn{background:transparent;border:0;color:#a6b3cc;cursor:pointer;font-size:17px}.delete-btn:hover{color:var(--red)}
+.notice{margin-top:16px;padding:14px 16px;border:1px solid #4d442e;background:#201d17;border-radius:12px;color:#d6cba9;font-size:12px}.notice strong{color:#f3d58d}footer{text-align:center;color:#62708b;font-size:11px;padding:24px 0 6px}
+.dialog{width:min(900px,calc(100% - 24px));max-height:85vh;background:#121a2c;color:var(--text);border:1px solid var(--line);border-radius:16px;padding:20px}.dialog::backdrop{background:#02040bd9;backdrop-filter:blur(4px)}.dialog-head{display:flex;justify-content:space-between;align-items:start;gap:10px}.dialog-head h3{margin:0}.dialog-head p,.import-help{color:var(--muted);font-size:12px}.icon-button{border:0;background:transparent;color:var(--text);font-size:18px;cursor:pointer}.preview-wrap{max-height:45vh}.dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
+@media(max-width:760px){.topbar{padding:22px 16px 12px;align-items:flex-start}.topbar .button{font-size:11px;padding:9px}.container{padding:0 14px 18px}.toolbar{align-items:stretch;flex-direction:column}.toolbar-actions{display:grid;grid-template-columns:1fr 1fr}.toolbar-actions .button{font-size:12px;padding:10px 8px}.month-picker input{width:100%}.summary-grid{grid-template-columns:1fr 1fr;gap:9px}.summary-card{padding:15px}.balance-card{grid-column:1/-1}.summary-card h2{font-size:23px}.content-grid{grid-template-columns:1fr}.panel{padding:16px}.transactions-heading{align-items:stretch;flex-direction:column}.search-input{max-width:none}.category-row{grid-template-columns:100px 1fr auto;gap:8px}.form-row{grid-template-columns:1fr 1fr}.dialog{padding:14px}.dialog-actions .button{white-space:normal}}
+@media(max-width:390px){.toolbar-actions{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.summary-card h2{font-size:21px}.category-row{grid-template-columns:85px 1fr auto;font-size:11px}}
+
+.accounts-panel{margin:12px 0 14px}
+.account-form{display:grid;grid-template-columns:1fr 1fr 1.4fr 1fr auto;gap:10px;align-items:end}
+.account-form label{font-size:12px}
+.accounts-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:14px}
+.account-card{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);background:#0d1527;border-radius:12px}
+.account-card strong{display:block;font-size:13px}.account-card small{display:block;color:var(--muted);font-size:11px}
+.account-balance{font-weight:800;font-size:13px;white-space:nowrap}
+.account-remove{border:0;background:transparent;color:#a6b3cc;cursor:pointer;font-size:16px}
+.account-note{font-size:11px;color:var(--muted);margin:12px 0 0}
+@media(max-width:760px){.account-form{grid-template-columns:1fr 1fr}.account-form button{grid-column:1/-1}.accounts-list{grid-template-columns:1fr}}
+@media(max-width:390px){.account-form{grid-template-columns:1fr}}
+
+.account-card{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding:15px;border:1px solid var(--line);background:linear-gradient(145deg,#17243b,#101827);border-radius:14px;min-width:0}
+.account-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.account-bank-name{font-weight:800;font-size:14px}.account-subtitle{color:var(--muted);font-size:11px;margin-top:3px}
+.account-card-balance{font-size:21px;font-weight:850;letter-spacing:-.03em;overflow-wrap:anywhere}
+.account-card-caption{font-size:11px;color:var(--muted)}
+.account-remove{border:0;background:transparent;color:#a6b3cc;cursor:pointer;font-size:17px;padding:0 4px}
+.unassigned-balance{margin-top:12px;border:1px dashed #53617a;border-radius:12px;padding:12px;color:var(--muted);font-size:12px}
+.account-form{grid-template-columns:1fr 1fr 1.4fr 1fr auto}
+@media(max-width:760px){.account-form{grid-template-columns:1fr 1fr}.account-form button{grid-column:1/-1}}
+@media(max-width:390px){.account-form{grid-template-columns:1fr}}
+.edit-btn{background:transparent;border:1px solid var(--line);border-radius:7px;color:#c7d1e8;cursor:pointer;font-size:11px;padding:5px 8px}.edit-btn:hover{border-color:var(--accent);color:var(--text)}
+
+
+/* AXEL Finance visual identity — navy noir, ice-blue light, brushed silver */
+:root{
+  color-scheme:dark;
+  --bg:#050b14;
+  --panel:#0a1421;
+  --panel2:#101f31;
+  --line:#1d3856;
+  --text:#e8f1ff;
+  --muted:#8da6c2;
+  --accent:#64b7ff;
+  --green:#74d8dc;
+  --red:#ff9a9f;
+}
+html{background:var(--bg);scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(ellipse at 12% 0%,rgba(24,76,129,.30),transparent 34%),
+    radial-gradient(ellipse at 95% 18%,rgba(23,94,156,.13),transparent 28%),
+    linear-gradient(145deg,#050a12,#071321 52%,#050b14);
+  color:var(--text);
+  font-family:"Aptos","Segoe UI",Arial,sans-serif;
+  letter-spacing:.005em;
+}
+.topbar{
+  max-width:1240px;
+  padding:26px 28px 20px;
+  border-bottom:1px solid rgba(86,151,211,.16);
+}
+.brand-lockup{display:flex;align-items:center;gap:17px;min-width:0}
+.brand-logo{
+  display:block;width:78px;height:78px;object-fit:cover;object-position:center;
+  border-radius:18px;border:1px solid #294d70;
+  box-shadow:0 0 0 4px rgba(49,126,194,.06),0 10px 34px rgba(0,0,0,.5),0 0 25px rgba(54,144,226,.14);
+}
+.brand-copy{min-width:0}
+.eyebrow{font-size:10px;letter-spacing:.24em;color:#72bcff;font-weight:800;margin:0 0 3px}
+.topbar h1{
+  font-family:"Baskerville","Palatino Linotype",Georgia,serif;
+  font-size:clamp(29px,4vw,40px);line-height:1.05;margin:0;
+  letter-spacing:.08em;font-weight:600;color:#f0f5ff;
+  text-shadow:0 2px 18px rgba(90,163,235,.16)
+}
+.topbar h1 span{font-family:"Aptos","Segoe UI",Arial,sans-serif;font-size:.38em;letter-spacing:.36em;color:#8ebbe4;vertical-align:middle;margin-left:8px;font-weight:700}
+.brand-tagline{margin:7px 0 0;color:#6f89a7;font:italic 12px/1.3 Georgia,serif;letter-spacing:.06em}
+.container{max-width:1240px;padding:0 28px 28px}
+.button{border-radius:10px;transition:transform .18s,border-color .18s,box-shadow .18s,background .18s}
+.button:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.25)}
+.primary{
+  color:#04101e;
+  background:linear-gradient(135deg,#a5d7ff,#4c9ee9 60%,#377fc4);
+  box-shadow:inset 0 1px rgba(255,255,255,.45),0 6px 18px rgba(40,125,201,.18);
+}
+.secondary{background:linear-gradient(145deg,#12243a,#0b1726);border-color:#294865;color:#cfe6ff}
+input,select{
+  background:linear-gradient(145deg,#081320,#0b1928);
+  border-color:#203b58;border-radius:10px;color:#e8f3ff;
+  box-shadow:inset 0 2px 7px rgba(0,0,0,.22);
+}
+input:focus,select:focus{border-color:#5caef4;box-shadow:0 0 0 3px rgba(80,163,239,.13),0 0 20px rgba(61,145,220,.08)}
+.summary-card,.panel{
+  position:relative;overflow:hidden;
+  background:linear-gradient(145deg,rgba(14,29,46,.97),rgba(7,17,29,.98));
+  border:1px solid #1d3b5b;border-radius:16px;
+  box-shadow:0 14px 34px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.025);
+}
+.summary-card:before,.panel:before{
+  content:"";position:absolute;inset:0 0 auto;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(116,190,255,.25),transparent);pointer-events:none
+}
+.summary-card{padding:21px 22px}
+.summary-card p{color:#9cb4ce;letter-spacing:.035em}
+.summary-card h2{font-family:"Aptos Display","Segoe UI",sans-serif;font-weight:650;color:#edf5ff;letter-spacing:-.045em;text-shadow:0 3px 20px rgba(85,159,224,.09)}
+.balance-card{border-color:#315c83;background:linear-gradient(135deg,#102943,#0a1929 68%,#0b1725);box-shadow:0 16px 36px rgba(0,0,0,.28),inset 0 1px rgba(147,205,255,.1)}
+.panel{padding:21px}
+.panel-heading h3{font-family:"Baskerville","Palatino Linotype",Georgia,serif;font-weight:600;font-size:19px;letter-spacing:.015em;color:#eaf3ff}
+.panel-heading p{color:#7f9ab7}
+.category-row{gap:13px}
+.bar-track{background:#13283e;border:1px solid rgba(82,132,178,.13);height:7px}
+.bar-fill{background:linear-gradient(90deg,#2d74b7,#65baff,#b5ddff);box-shadow:0 0 12px rgba(76,164,237,.23)}
+.category-total{color:#d8eaff}
+th{color:#7f9dbb;letter-spacing:.11em}
+td,th{border-bottom-color:rgba(61,100,139,.20)}
+tbody tr{transition:background .15s}
+tbody tr:hover{background:rgba(57,127,190,.07)}
+.amount.income{color:#7ed7e4}.amount.expense{color:#ffaaa9}
+.pill{border-color:#2a4b6c;background:rgba(42,94,140,.12);color:#c3ddf7}
+.edit-btn{border-color:#254664;color:#b6d7f6;background:rgba(30,74,112,.12)}
+.edit-btn:hover{border-color:#68b8ff;color:#fff;box-shadow:0 0 16px rgba(74,161,235,.12)}
+.delete-btn:hover{color:#ff9a9f}
+.accounts-panel{margin:14px 0}
+.account-card{background:linear-gradient(145deg,#10253a,#091522);border-color:#244664;box-shadow:0 8px 20px rgba(0,0,0,.16)}
+.account-card-balance{color:#e8f3ff;font-variant-numeric:tabular-nums}
+.account-note{color:#7894b2}
+.unassigned-balance{border-color:#315574;background:rgba(16,43,67,.25)}
+.notice{border-color:#294a66;background:linear-gradient(135deg,#0e2031,#0a1622);color:#a9c1d9}
+.notice strong{color:#d3e9ff}
+footer{color:#607d9c;letter-spacing:.04em}
+.footer-brand{color:#83bce9;letter-spacing:.2em;font-weight:800}
+.dialog{background:linear-gradient(145deg,#0e1c2d,#07111d);border-color:#315575;box-shadow:0 25px 90px rgba(0,0,0,.6)}
+.dialog::backdrop{background:rgba(1,5,12,.84);backdrop-filter:blur(7px)}
+.icon-button{color:#a9c9e8}
+.form-message{color:#8adce5}
+.toolbar{margin-top:20px}
+.month-picker,label{color:#8fa9c5}
+@media(max-width:760px){
+  .topbar{padding:18px 16px 15px;gap:10px}
+  .brand-lockup{gap:11px}
+  .brand-logo{width:58px;height:58px;border-radius:13px}
+  .eyebrow{font-size:8px;letter-spacing:.15em}
+  .topbar h1{font-size:28px}
+  .topbar h1 span{display:block;margin:4px 0 0;font-size:10px;letter-spacing:.32em}
+  .brand-tagline{font-size:10px}
+  .container{padding:0 14px 20px}
+  .topbar .button{font-size:10px;padding:8px}
+}
+@media(max-width:390px){
+  .brand-logo{width:48px;height:48px}
+  .topbar h1{font-size:24px}
+  .brand-tagline{max-width:170px}
+}

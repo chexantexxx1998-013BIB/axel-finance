@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <title>AXEL Finance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-lockup">
+      <img class="brand-logo" src="axel-logo.png" alt="Эмблема AXEL Finance">
+      <div class="brand-copy">
+        <p class="eyebrow">PERSONAL FINANCE SYSTEM</p>
+        <h1>AXEL <span>FINANCE</span></h1>
+        <p class="brand-tagline">Дисциплина сегодня — свобода завтра.</p>
+      </div>
+    </div>
+    <button id="exportBtn" class="button secondary">↗ Экспорт данных</button>
+<button id="cloudImportBtn" class="button secondary" hidden>☁ Перенести данные в облако</button>
+  </header>
+
+  <section id="authPanel" class="panel" style="max-width:520px;margin:24px auto;">
+  <h2>Вход в AXEL Finance</h2>
+  <p>Войди в свой аккаунт для доступа к личным финансам.</p>
+
+  <form id="authForm" class="transaction-form">
+    <label>Email
+      <input id="authEmail" type="email" autocomplete="email" required>
+    </label>
+
+    <label>Пароль
+      <input id="authPassword" type="password"
+             autocomplete="current-password" minlength="10" required>
+    </label>
+
+    <button class="button primary full" type="submit">Войти</button>
+    <button id="signUpBtn" class="button secondary full" type="button">
+      Создать аккаунт
+    </button>
+
+    <p id="authMessage" class="form-message" aria-live="polite"></p>
+  </form>
+</section>
+  <main class="container">
+    <section class="toolbar">
+      <label class="month-picker">Месяц
+        <input id="monthFilter" type="month">
+      </label>
+      <div class="toolbar-actions">
+        <label class="button secondary file-button">Импорт выписки CSV / Excel
+          <input id="csvFile" type="file" accept=".csv,.xlsx,.xls,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel">
+        </label>
+        <button id="addBtn" class="button primary">＋ Добавить операцию</button>
+      </div>
+    </section>
+
+    <section class="panel accounts-panel">
+      <div class="panel-heading">
+        <div>
+          <h3>Мои счета</h3>
+          <p>Остатки по каждой карте и общий баланс</p>
+        </div>
+      </div>
+      <form id="accountForm" class="account-form">
+        <label>Банк
+          <select id="accountBank">
+            <option>Anorbank</option><option>Uzum Bank</option><option>TBC Bank</option>
+            <option>KDB Bank</option><option>Payme</option><option>Другой банк</option>
+          </select>
+        </label>
+        <label>Платёжная система
+          <select id="accountSystem">
+            <option>Uzcard</option><option>Humo</option><option>Другое</option>
+          </select>
+        </label>
+        <label>Название счёта
+          <input id="accountName" type="text" placeholder="Например, основная карта" required>
+        </label>
+        <label>Начальный остаток (сум)
+          <input id="accountBalance" type="number" min="0" step="1" value="0" required>
+        </label>
+        <button class="button primary" type="submit">Добавить счёт</button>
+      </form>
+      <div id="accountsList" class="accounts-list"></div>
+      <p id="accountEmpty" class="account-note">Добавь счета выше. Начальный остаток не считается доходом.</p>
+      <div id="unassignedBalance" class="unassigned-balance" hidden></div>
+      <p class="account-note">Счёт операции выбирается отдельно. Старые операции без счёта останутся в общем балансе, пока ты не привяжешь их к карте.</p>
+    </section>
+
+    <section class="summary-grid">
+      <article class="summary-card balance-card">
+        <p>Расчётный остаток</p>
+        <h2 id="balanceValue">0 сум</h2>
+        <small>Доходы минус расходы за всё время</small>
+      </article>
+      <article class="summary-card">
+        <p>Доходы за месяц</p>
+        <h2 id="incomeValue">0 сум</h2>
+        <small>Поступления за выбранный месяц</small>
+      </article>
+      <article class="summary-card">
+        <p>Расходы за месяц</p>
+        <h2 id="expenseValue">0 сум</h2>
+        <small>Списания за выбранный месяц</small>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel">
+        <div class="panel-heading">
+          <div>
+            <h3>Расходы по категориям</h3>
+            <p>За выбранный месяц</p>
+          </div>
+        </div>
+        <div id="categoryBreakdown" class="category-list">
+          <div class="empty-state">Пока нет расходов за этот месяц.</div>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-heading">
+          <div>
+            <h3 id="formTitle">Новая операция</h3>
+            <p>Позже подключим автоматическое получение операций; пока можно импортировать выписку</p>
+          </div>
+        </div>
+        <form id="transactionForm" class="transaction-form">
+          <div class="type-switch">
+            <label><input type="radio" name="type" value="expense" checked> Расход</label>
+            <label><input type="radio" name="type" value="income"> Доход</label>
+          </div>
+          <label>Сумма (сум)
+            <input id="amountInput" type="number" min="1" step="1" placeholder="Например, 85000" required>
+          </label>
+          <label>Описание
+            <input id="descriptionInput" type="text" placeholder="Например, Korzinka или аренда" required>
+          </label>
+          <div class="form-row">
+            <label>Дата
+              <input id="dateInput" type="date" required>
+            </label>
+            <label>Счёт
+              <select id="transactionAccount">
+                <option value="">Не указан</option>
+              </select>
+            </label>
+          </div>
+          <label>Категория
+              <select id="categoryInput">
+                <option>Продукты</option><option>Жильё</option><option>Транспорт</option>
+                <option>Кафе и доставка</option><option>Здоровье</option><option>Покупки</option>
+                <option>Подписки</option><option>Переводы</option><option>Снятие наличных</option>
+                <option>Зарплата</option><option>Прочий доход</option><option>Другое</option>
+              </select>
+          </label>
+          <button class="button primary full" type="submit">Сохранить операцию</button>
+          <p id="formMessage" class="form-message" aria-live="polite"></p>
+        </form>
+      </article>
+    </section>
+
+    <section class="panel transactions-panel">
+      <div class="panel-heading transactions-heading">
+        <div>
+          <h3>История операций</h3>
+          <p id="transactionCount">0 операций</p>
+        </div>
+        <input id="searchInput" class="search-input" type="search" placeholder="Поиск по описанию или категории">
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Дата</th><th>Операция</th><th>Категория</th><th>Счёт</th><th class="amount-col">Сумма</th><th></th></tr></thead>
+          <tbody id="transactionsBody"></tbody>
+        </table>
+      </div>
+      <div id="emptyTransactions" class="empty-state">Операций пока нет. Импортируй выписку CSV или Excel.</div>
+    </section>
+
+    <section class="notice">
+      <strong>Важно о безопасности.</strong> Эта версия хранит данные в браузере на этом устройстве. Не загружай сюда пароли, PIN-коды или SMS-коды. Перед импортом выписки проверь, что в ней нет лишних персональных данных. Сделай экспорт резервной копии, если меняешь браузер или устройство.
+    </section>
+    <footer><span class="footer-brand">AXEL FINANCE</span> · данные хранятся локально на этом устройстве</footer>
+  </main>
+
+  <dialog id="editDialog" class="dialog">
+    <form id="editForm" class="transaction-form">
+      <div class="dialog-head"><div><h3>Изменить операцию</h3><p>Исправь данные и сохрани изменения</p></div><button id="closeEdit" class="icon-button" type="button" aria-label="Закрыть">✕</button></div>
+      <div class="type-switch">
+        <label><input type="radio" name="editType" value="expense" checked> Расход</label>
+        <label><input type="radio" name="editType" value="income"> Доход</label>
+      </div>
+      <label>Сумма (сум)<input id="editAmount" type="number" min="1" step="1" required></label>
+      <label>Описание<input id="editDescription" type="text" required></label>
+      <div class="form-row">
+        <label>Дата<input id="editDate" type="date" required></label>
+        <label>Счёт<select id="editAccount"><option value="">Не указан</option></select></label>
+      </div>
+      <label>Категория<select id="editCategory"></select></label>
+      <div class="dialog-actions"><button id="cancelEdit" class="button secondary" type="button">Отмена</button><button class="button primary" type="submit">Сохранить изменения</button></div>
+      <p id="editMessage" class="form-message" aria-live="polite"></p>
+    </form>
+  </dialog>
+  <dialog id="importDialog" class="dialog">
+    <form method="dialog" class="dialog-head">
+      <div><h3>Проверка импорта</h3><p id="importSummary">Найденные операции</p></div>
+      <button class="icon-button" value="cancel" aria-label="Закрыть">✕</button>
+    </form>
+    <div class="import-help">
+      Мы попробуем распознать распространённые заголовки: date/дата, description/описание/merchant, amount/сумма. Расходы могут быть отрицательными или положительными — проверьте направление перед подтверждением.
+    </div>
+    <div class="table-wrap preview-wrap"><table><thead><tr><th>Дата</th><th>Описание</th><th>Категория</th><th>Тип</th><th>Сумма</th></tr></thead><tbody id="previewBody"></tbody></table></div>
+    <div class="dialog-actions">
+      <button id="cancelImport" class="button secondary" type="button">Отмена</button>
+      <button id="confirmImport" class="button primary" type="button">Импортировать операции</button>
+    </div>
+  </dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
